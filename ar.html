@@ -1,0 +1,80 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="importmap">
+    {
+       "imports": {
+           "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+           "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/",
+           "mindar-image-three":"https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-three.prod.js"
+      }
+    }
+    </script>
+    <script type="module">
+      import * as THREE from 'three';
+      import { MindARThree } from 'mindar-image-three';
+      import { GLTFLoader } from 'https://unpkg.com/three@0.160.0/examples/jsm/loaders/GLTFLoader.js';
+      const mindarThree = new MindARThree({
+        container: document.querySelector("#container"),
+        imageTargetSrc: "https://raw.githubusercontent.com/Rayasd396kr/ar/main/targets.mind" //辨識圖
+      });
+      const {renderer, scene, camera} = mindarThree;
+      const anchor = mindarThree.addAnchor(0);
+      const loader = new GLTFLoader(); // 使用正确的加载器
+
+      // 加载模型文件
+      loader.load(
+        'https://raw.githubusercontent.com/Rayasd396kr/ar/main/asset.gltf', //模型
+        function (gltf) {
+          // 加载完成后的回调函数
+          const model = gltf.scene;
+          anchor.group.add(model); // 将模型添加到场景中
+        },
+        undefined,
+        function (error) {
+          console.error('An error happened', error);
+        }
+      );
+
+      const start = async() => {
+        await mindarThree.start();
+        renderer.setAnimationLoop(() => {
+          renderer.render(scene, camera);
+        });
+      }
+
+      // 在DOM内容加载完成后自动启动相机
+      document.addEventListener('DOMContentLoaded', (event) => {
+        start();
+      });
+
+      const stopButton = document.querySelector("#stopButton");
+      stopButton.addEventListener("click", () => {
+            mindarThree.stop();
+            mindarThree.renderer.setAnimationLoop(null);
+      });
+    </script>
+    <style>
+      body {
+        margin: 0;
+      }
+      #container {
+        width: 100vw;
+        height: 100vh;
+        position: relative;
+        overflow: hidden;
+      }
+      #control {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 2;
+      }
+    </style>
+  </head>
+  <body>
+    
+    <div id="container">
+    </div>
+  </body>
+</html>
