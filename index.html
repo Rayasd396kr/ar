@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -11,29 +12,28 @@
         <a-asset-item id="raccoonModel" src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.5/examples/image-tracking/assets/band-example/raccoon/scene.gltf"></a-asset-item>
       </a-assets>
 
-      <a-camera position="0 0 0" look-controls="enabled: false" cursor="fuse: false; rayOrigin: mouse;" raycaster="far: ${customFields.libVersion}; objects: .clickable"></a-camera>
+      <a-camera position="0 0 0" look-controls="enabled: false" cursor="fuse: false; rayOrigin: mouse;" raycaster="far: 10; objects: .clickable"></a-camera>
 
       <a-entity id="bearEntity" mindar-image-target="targetIndex: 0" >
-        <a-gltf-model id="bearModel" class="clickable" rotation="0 0 0 " position="0 -0.25 0" scale="0.05 0.05 0.05" src="#bearModel" animation-mixer></a-gltf-model>
+        <a-gltf-model id="bearModel" class="clickable" rotation="0 0 0 " position="0 -0.25 0" scale="0.05 0.05 0.05" src="#bearModel" animation-mixer ar-click-events></a-gltf-model>
       </a-entity>
       <a-entity id="raccoonEntity" mindar-image-target="targetIndex: 1" >
-        <a-gltf-model id="raccoonModel" class="clickable" rotation="0 0 0 " position="0 -0.25 0" scale="0.05 0.05 0.05" src="#raccoonModel" animation-mixer></a-gltf-model>
+        <a-gltf-model id="raccoonModel" class="clickable" rotation="0 0 0 " position="0 -0.25 0" scale="0.05 0.05 0.05" src="#raccoonModel" animation-mixer ar-click-events></a-gltf-model>
       </a-entity>
     </a-scene>
 
     <script>
-      // detect click event for bear model
-      const bearModel = document.querySelector('#bearModel');
-      bearModel.addEventListener("click", event => {
-        console.log("Bear model clicked");
-        window.location.href = "https://www.nutc.edu.tw/";
-      });
-
-      // detect click event for raccoon model
-      const raccoonModel = document.querySelector('#raccoonModel');
-      raccoonModel.addEventListener("click", event => {
-        console.log("Raccoon model clicked");
-        window.location.href = "https://language.nutc.edu.tw/";
+      AFRAME.registerComponent('ar-click-events', {
+        init: function () {
+          this.el.addEventListener('click', function (evt) {
+            console.log('Model clicked:', evt.target.id);
+            if (evt.target.id === 'bearModel') {
+              window.location.href = "https://www.nutc.edu.tw/";
+            } else if (evt.target.id === 'raccoonModel') {
+              window.location.href = "https://language.nutc.edu.tw/";
+            }
+          });
+        }
       });
     </script>
   </body>
