@@ -11,29 +11,30 @@
         <a-asset-item id="raccoonModel" src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.5/examples/image-tracking/assets/band-example/raccoon/scene.gltf"></a-asset-item>
       </a-assets>
 
-      <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+      <a-camera position="0 0 0" look-controls="enabled: false" cursor="fuse: false; rayOrigin: mouse;" raycaster="far: ${customFields.libVersion}; objects: .clickable"></a-camera>
 
-      <a-entity id="bearEntity" mindar-image-target="targetIndex: 0" onClick="handleClick('bear')">
-        <a-gltf-model rotation="0 0 0 " position="0 -0.25 0" scale="0.05 0.05 0.05" src="#bearModel" animation-mixer></a-gltf-model>
+      <a-entity id="bearEntity" mindar-image-target="targetIndex: 0" >
+        <a-gltf-model id="bearModel" class="clickable" rotation="0 0 0 " position="0 -0.25 0" scale="0.05 0.05 0.05" src="#bearModel" animation-mixer></a-gltf-model>
       </a-entity>
-      <a-entity id="raccoonEntity" mindar-image-target="targetIndex: 1" onClick="handleClick('raccoon')">
-        <a-gltf-model rotation="0 0 0 " position="0 -0.25 0" scale="0.05 0.05 0.05" src="#raccoonModel" animation-mixer></a-gltf-model>
+      <a-entity id="raccoonEntity" mindar-image-target="targetIndex: 1" >
+        <a-gltf-model id="raccoonModel" class="clickable" rotation="0 0 0 " position="0 -0.25 0" scale="0.05 0.05 0.05" src="#raccoonModel" animation-mixer></a-gltf-model>
       </a-entity>
     </a-scene>
 
     <script>
-      // 定义点击事件处理函数，接受一个参数来确定点击了哪个 AR 物体
-      function handleClick(entity) {
-        console.log("点击 AR 物体：" + entity);
-        // 根据 AR 物体的不同，执行不同的操作
-        if (entity === 'bear') {
-          console.log("跳转到熊页面");
-          window.location.href = "https://www.nutc.edu.tw/"; // 替换为熊页面的 URL
-        } else if (entity === 'raccoon') {
-          console.log("跳转到熊页面1");
-          window.location.href = "https://language.nutc.edu.tw/"; // 替换为浣熊页面的 URL
-        }
-      }
+      // detect click event for bear model
+      const bearModel = document.querySelector('#bearModel');
+      bearModel.addEventListener("click", event => {
+        console.log("Bear model clicked");
+        window.location.href = "https://www.nutc.edu.tw/";
+      });
+
+      // detect click event for raccoon model
+      const raccoonModel = document.querySelector('#raccoonModel');
+      raccoonModel.addEventListener("click", event => {
+        console.log("Raccoon model clicked");
+        window.location.href = "https://language.nutc.edu.tw/";
+      });
     </script>
   </body>
 </html>
