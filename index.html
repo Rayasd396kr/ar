@@ -1,4 +1,3 @@
-
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -15,25 +14,27 @@
 
       <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
 
-      <a-entity mindar-image-target="targetIndex: 0">
-        <a-gltf-model rotation="0 0 0 " position="0 -0.25 0" scale="0.05 0.05 0.05" src="#bearModel" animation-mixer>
+      <a-entity id="bearEntity" mindar-image-target="targetIndex: 0" onClick="handleClick('bear')">
+        <a-gltf-model rotation="0 0 0 " position="0 -0.25 0" scale="0.05 0.05 0.05" src="#bearModel" animation-mixer></a-gltf-model>
       </a-entity>
-      <a-entity mindar-image-target="targetIndex: 1">
-        <a-gltf-model rotation="0 0 0 " position="0 -0.25 0" scale="0.05 0.05 0.05" src="#raccoonModel" animation-mixer>
+      <a-entity id="raccoonEntity" mindar-image-target="targetIndex: 1" onClick="handleClick('raccoon')">
+        <a-gltf-model rotation="0 0 0 " position="0 -0.25 0" scale="0.05 0.05 0.05" src="#raccoonModel" animation-mixer></a-gltf-model>
       </a-entity>
     </a-scene>
+
+    <script>
+      // 定义点击事件处理函数，接受一个参数来确定点击了哪个 AR 物体
+      function handleClick(entity) {
+        console.log("点击 AR 物体：" + entity);
+        // 根据 AR 物体的不同，执行不同的操作
+        if (entity === 'bear') {
+          console.log("https://www.nutc.edu.tw/");
+          // window.location.href = "bear_page_url_here"; // 替换为熊页面的 URL
+        } else if (entity === 'raccoon') {
+          console.log("https://language.nutc.edu.tw/");
+          // window.location.href = "raccoon_page_url_here"; // 替换为浣熊页面的 URL
+        }
+      }
+    </script>
   </body>
-  <script>
-    // 在页面加载完成后执行代码
-    document.addEventListener("DOMContentLoaded", function() {
-      // 获取点击平面元素
-      const clickPlane = document.querySelector('#clickPlane');
-      
-      // 添加点击事件监听器
-      clickPlane.addEventListener("click", event => {
-        // 在点击时执行相关操作，例如跳转到指定页面
-        window.location.href = "https://www.nutc.edu.tw/"; // 替换为您要跳转的页面 URL
-      });
-    });
-  </script>
 </html>
