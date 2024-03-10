@@ -2,7 +2,6 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v7.0.0/dist/aframe-extras.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
   </head>
   <body>
@@ -28,8 +27,10 @@
         console.log("点击 AR 物体：" + entity);
         // 根据 AR 物体的不同，执行不同的操作
         if (entity === 'bear') {
+          console.log("跳转到熊页面");
           window.location.href = "https://www.nutc.edu.tw/"; // 替换为熊页面的 URL
         } else if (entity === 'raccoon') {
+          console.log("跳转到熊页面1");
           window.location.href = "https://language.nutc.edu.tw/"; // 替换为浣熊页面的 URL
         }
       }
