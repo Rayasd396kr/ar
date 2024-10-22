@@ -21,7 +21,7 @@
         <a-scene embedded mindar-image="uiScanning: #example-scanning-overlay;filterMinCF:0.0001; filterBeta: 0.001;imageTargetSrc: https://raw.githubusercontent.com/Rayasd396kr/ar/main/t4.mind;" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
             <a-camera position="0 0 0" look-controls="enabled: true" cursor="fuse: false; rayOrigin: mouse;" raycaster="far: ${customFields.libVersion}; objects: .clickable"></a-camera>
             <a-entity id="bearEntity" mindar-image-target="targetIndex: 0">
-                <a-plane opacity="0.5" color="white" width="10" height="10" position="0 0 0"></a-plane>
+                <!-- <a-plane opacity="0.5" color="white" width="10" height="10" position="0 0 0"></a-plane> -->
                 <a-text value="get!" color="black" align="center" position="0 0 0"></a-text>
             </a-entity>
             <a-entity id="raccoonEntity" mindar-image-target="targetIndex: 1">
@@ -32,7 +32,7 @@
                 onclick="window.top.location.href='https://project.rayasd396kr.workers.dev/floorselect';">
                     <a-text value="大樓介紹" font="https://raw.githubusercontent.com/Rayasd396kr/ar/main/floor-msdf.json" negate="false" align="center" color="white" position="0 0 0.1" scale="0.75 0.75 0.75"></a-text>
                 </a-box>
-                <a-plane color="white" width="2" height="2.5" position="0 0 -0.5" rotation="0 0 0"></a-plane>
+                <!-- <a-plane color="white" width="2" height="2.5" position="0 0 -0.5" rotation="0 0 0"></a-plane> -->
             </a-entity>
         </a-scene>
     </div>
