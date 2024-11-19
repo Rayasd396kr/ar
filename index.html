@@ -37,5 +37,12 @@
             </a-entity>
         </a-scene>
     </div>
+    <script>
+        const exampleTarget = document.querySelector('#bearEntity');
+            exampleTarget.addEventListener("targetFound", event => {
+            console.log("target found");
+            window.parent.localStorage.setItem('okStatus1', 'true');
+        });
+    </script>
 </body>
 </html>
