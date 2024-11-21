@@ -19,7 +19,7 @@
 <body>
     
     <div class="scene-container" id="scene-container">        
-        <a-scene embedded mindar-image="uiScanning: #example-scanning-overlay;filterMinCF:0.0001; filterBeta: 0.001;imageTargetSrc: https://raw.githubusercontent.com/Rayasd396kr/ar/main/t6.mind;" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+        <a-scene embedded mindar-image="uiScanning: #example-scanning-overlay;filterMinCF:0.0001; filterBeta: 0.001;imageTargetSrc: https://raw.githubusercontent.com/Rayasd396kr/ar/main/t7.mind;" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
             <a-camera position="0 0 0" look-controls="enabled: true" cursor="fuse: false; rayOrigin: mouse;" raycaster="far: ${customFields.libVersion}; objects: .clickable"></a-camera>
             <a-entity id="bearEntity" mindar-image-target="targetIndex: 0">
                 <!-- <a-plane opacity="0.5" color="white" width="10" height="10" position="0 0 0"></a-plane> -->
@@ -52,7 +52,7 @@
         const exampleTarget = document.querySelector('#bearEntity');
         exampleTarget.addEventListener("targetFound", event => {
             console.log("target found");
-            window.parent.localStorage.setItem('okStatus1', 'true');
+            window.parent.postMessage({ key: 'okStatus1', value: 'true' }, '*');
         });
         
     </script>
