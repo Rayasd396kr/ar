@@ -19,7 +19,7 @@
 <body>
     
     <div class="scene-container" id="scene-container">        
-        <a-scene embedded mindar-image="uiScanning: #example-scanning-overlay;filterMinCF:0.0001; filterBeta: 0.001;imageTargetSrc: https://raw.githubusercontent.com/Rayasd396kr/ar/main/t5.mind;" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+        <a-scene embedded mindar-image="uiScanning: #example-scanning-overlay;filterMinCF:0.0001; filterBeta: 0.001;imageTargetSrc: https://raw.githubusercontent.com/Rayasd396kr/ar/main/t6.mind;" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
             <a-camera position="0 0 0" look-controls="enabled: true" cursor="fuse: false; rayOrigin: mouse;" raycaster="far: ${customFields.libVersion}; objects: .clickable"></a-camera>
             <a-entity id="bearEntity" mindar-image-target="targetIndex: 0">
                 <!-- <a-plane opacity="0.5" color="white" width="10" height="10" position="0 0 0"></a-plane> -->
@@ -29,14 +29,14 @@
             <a-entity id="raccoonEntity" mindar-image-target="targetIndex: 1">
 
                 <!-- 右侧垂直排列的四张小图 -->
-                <a-entity position="1 -1 0">
+                <!-- <a-entity position="1 -1 0">
                     <a-image class="clickable" src="https://raw.githubusercontent.com/Rayasd396kr/ar/main/pc1.png" position="0 1 0" scale="0.25 0.25 0.25" 
                              onclick="window.top.location.href='https://csie.nutc.edu.tw/';"></a-image>
                     <a-image class="clickable"  src="https://raw.githubusercontent.com/Rayasd396kr/ar/main/pc2.png" position="0 0.5 0" scale="0.25 0.25 0.25" 
                     onclick="window.top.location.href='https://im.nutc.edu.tw/';" ></a-image>
                     <a-image class="clickable" src="https://raw.githubusercontent.com/Rayasd396kr/ar/main/pc3.png" position="0 0 0" scale="0.25 0.25 0.25" 
                     onclick="window.top.location.href='https://ai.nutc.edu.tw/';"        ></a-image>
-                </a-entity>
+                </a-entity> -->
                 <!-- <a-image src="https://raw.githubusercontent.com/Rayasd396kr/ar/main/a.png" position="0 1.2 0" scale="0.75 0.75 0.75"></a-image> -->
                 <a-text id="clickable" value="資訊樓" font="https://raw.githubusercontent.com/Rayasd396kr/ar/main/custom-msdf.json" negate="false" color="black" align="center" position="0 -1 0"></a-text>
                 <a-gltf-model rotation="0 0 0 " position="0 -0.5 0" scale="1 1 1" src="https://raw.githubusercontent.com/Rayasd396kr/ar/main/zcl.glb" animation-mixer></a-gltf-model>
